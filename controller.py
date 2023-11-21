@@ -25,7 +25,7 @@ if (gameSetting == 'Y' or gameSetting == 'y'):
         totalBoardSize = boardSize * boardSize
     print('Do you want customize the ladders then press Y and for default board type N')
     laddersSetting = input()
-    if (laddersSetting == 'Y' or boardSetting == 'y'):
+    if (laddersSetting == 'Y' or laddersSetting == 'y'):
         print('Enter count of ladders')
         totalLadders = Util.integerInput()
         config = Configuration.CustomLadder()
@@ -43,7 +43,7 @@ if (gameSetting == 'Y' or gameSetting == 'y'):
         snakes = config.customSnakePostion(totalsnakes, boardSize)
     else:
         print('you have choosed default settings for snake')
-        config = Configuration.CustomSnake
+        config = Configuration.CustomSnake()
         snakes = config.defaultPostionSnake()
 else:
     print('you have choosed default settings for game')
@@ -74,6 +74,8 @@ if (len(player1) > len(player2)):
     player2.append(0)
 elif (len(player1) < len(player2)):
     player1.append(0)
+
+Util.saveDataIntoFile(player1,player2)
 movesPlayer1 = Util.convertIntoNumpyArray(player1)
 movesPlayer2 = Util.convertIntoNumpyArray(player2)
 print(f"player1 all movements:{movesPlayer1}")

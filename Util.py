@@ -12,10 +12,18 @@ def convertIntoNumpyArray(moveList):
     array = np.array(moveList)
     return array
 
+def checkIntegerInput(n):
+    if(n < 0):
+        print("negative value is not allowed please enter again")
+        integerInput()
+    else:
+        pass
+
 
 def integerInput():
     try:
         n = int(input())
+        checkIntegerInput(n)
         return n
     except:
         print('type an integer')
@@ -29,3 +37,12 @@ def plotGraph(player1, player2):
     plt.ylabel("moves of player 2", fontdict=font)
     plt.show()
 # plotGraph()
+def saveDataIntoFile(player1,player2):
+    with open('player_moves.txt', 'w') as file:
+        # Convert the list to a string and write to the file
+        file.write('player1 moves\n')
+        file.write(','.join(map(str, player1)))
+        file.write('\nplayer2 moves\n')
+        file.write(','.join(map(str, player2)))
+
+    print("players values have been saved to the player_moves file.")
